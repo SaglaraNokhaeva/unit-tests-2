@@ -77,7 +77,7 @@ class ShopTest {
         // Act (Выполнение)
         cart.addProductToCartByID(1); // 170 +
         cart.addProductToCartByID(2); // 250 +
-        //..
+        //Assert
         assertThat(cart.getTotalPrice()).isEqualTo(170+250);
     }
 
@@ -90,10 +90,16 @@ class ShopTest {
     @Test
     void priceCartProductsSameTypeIsCorrectCalculated() {
         // Arrange
+        Shop shop = new Shop(getStoreItems());
+        Cart cart = new Cart(shop);
 
-        // Act
-
-        // Assert
+// Act
+        cart.addProductToCartByID(1);
+        cart.addProductToCartByID(2);
+        cart.addProductToCartByID(4);
+        cart.addProductToCartByID(4);
+// Assert
+        assertThat(cart.getTotalPrice()).isEqualTo(720);
 
     }
 
