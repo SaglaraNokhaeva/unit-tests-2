@@ -111,6 +111,18 @@ class ShopTest {
      */
     @Test
     void whenChangingCartCostRecalculationIsCalled() {
+        // Arrange
+        Shop shop = new Shop(getStoreItems());
+        Cart cart = new Cart(shop);
+
+// Act
+        cart.addProductToCartByID(1);
+        cart.addProductToCartByID(2);
+        cart.addProductToCartByID(4);
+        cart.removeProductByID(4);
+// Assert
+        assertThat(cart.getTotalPrice()).isEqualTo(420);
+
 
     }
 
